@@ -33,7 +33,9 @@ Route::get('/products/{product}', function (Product $product) {
 // route model binding
 // endpoint wilcard name and variable name must be the same
 
-Route::get('categories/{category}', function (Category $category) {
+// for slug use colorname instead of id
+// nicer endpoints
+Route::get('categories/{category:slug}', function (Category $category) {
     // return $category;
     // and $category->products
     return $category->products;
