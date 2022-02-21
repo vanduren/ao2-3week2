@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,6 +23,7 @@ class ProductFactory extends Factory
             'price' => $this->faker->randomFloat(2,0,200),
             // 'category_id' => Category::factory()->create()->id,
             'category_id' => Category::inRandomOrder()->first()->id,
+            'employee_id' => User::inRandomOrder()->first()->id,
         ];
     }
 }

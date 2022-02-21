@@ -1,3 +1,4 @@
+Based on laracasts laravel8 from scratch
 laravel new
 composer require laravel/breeze
 php artisan breeze:install

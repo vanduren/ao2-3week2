@@ -2,6 +2,7 @@
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,4 +41,23 @@ Route::get('categories/{category:slug}', function (Category $category) {
     // and $category->products
     return $category->products;
 });
+
+Route::get('/categories', function () {
+    return Category::all();
+});
+
+Route::get('/products', function () {
+    // n+1 problem (lazy loading) (see in view with clockwork)
+    // $products = Product::all();
+    // fix:
+    // $products = Product::all()->load('category');
+    // or:
+    $products = Product::with('category', 'employee')->get();
+    return view('products.index', ['products' => $products]);
+});
+
+Route::get('/users', function () {
+    return User::all();
+});
+
 require __DIR__.'/auth.php';

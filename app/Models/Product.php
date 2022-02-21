@@ -14,4 +14,10 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    // a product is owned by an employee
+    public function employee()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

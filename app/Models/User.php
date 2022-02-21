@@ -41,4 +41,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // user as employee is responsible for many products
+    public function products()
+    {
+        return $this->hasMany(ProductFactory::class);
+    }
+
 }
